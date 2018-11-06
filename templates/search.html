@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+<div class="container" style="background-color: rgba(11,255,10,0.07)">
+    <div class="row">
+        <div class="col-xs-12 col-sm-9">
+           <h1 class="text-center" style="font-weight: bolder">Search For Rooms</h1>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="col-xs-12 alldiv">
+                <form method="GET" action="{{ url_for('add') }}">
+                    <input type="submit" value="Add items" class="btn btninput">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row searchitems">
+        <form method="GET" action="/">
+            <div class="col-xs-12 form-group">
+                <input type="text" value="" name="query" id="query" placeholder="Search Here" class="form-control text-center" style="height: 40px">
+            </div>
+            <br>
+            <div class="col-xs-12 col-sm-3">
+                <input type="submit" value="Search" name="Search" id="Search" class="btn btninput"><br>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <input type="submit" value="Fuzzy Search" name="Search" id="Search" class="btn btninput"><br>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <input type="submit" value="Wildcard Search" name="Search" id="Search" class="btn btninput"><br>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <input type="submit" value="Regexp Search" name="Search" id="Search" class="btn btninput"><br>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+
+        <div class="col-xs-12">
+            {% for res in response %}
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div>
+                        <div style="width: 100%;height: 250px">
+                            <img src="{{ res._source.url }}" style="height: 100%;width: 100%">
+                        </div>
+                        <ul class="list-unstyled">
+                            <li class="nameProp">Name: {{ res._source.name }}</li>
+                            <li class="addProp">Address: {{ res._source.address }}</li>
+                            <li class="feedProp">Feed: {{ res._source.feed }}</li>
+                            <li class="priceProp">Price: {{ res._source.price }}</li>
+                            <form method="POST" action="/update" style="margin-top: 20px">
+                                <input type="hidden" value="{{ res._id }}" name="id">
+                                <input type="submit" value="Update item" class="btn btninput">
+                            </form>
+
+                            <form method="POST" action="/delete" style="margin-top: 20px">
+                                <input type="hidden" value="{{ res._id }}" name="id">
+                                <input type="submit" value="Delete item" class="btn btninput">
+                            </form><br><br>
+                        </ul>
+                    </div>
+
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+</body>
+</html>

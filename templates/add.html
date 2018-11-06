@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ⚡ lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+<div class="container" style="background-color: rgba(11,255,10,0.07)">
+    <h1 style="font-weight: bolder" class="text-center">ADD ITEMS</h1>
+    <form action="/add" method="POST">
+        <div class="row searchitems">
+            <div class="col-xs-12 form-group">
+                <input type="text" value="" name="name" id="name" placeholder="Input Name" class="form-control text-center">
+            </div>
+
+            <div class="col-xs-12 form-group">
+                <input type="text" value="" name="address" id="address" placeholder="Input Address" class="form-control text-center">
+            </div>
+
+            <div class="col-xs-12 form-group">
+                <input type="text" value="" name="price" id="price" placeholder="Input Price" class="form-control text-center">
+            </div>
+
+            <div class="col-xs-12 form-group">
+                <input type="text" value="" name="url_link" id="url_link" placeholder="Input url link" class="form-control text-center">
+            </div>
+
+            <div class="col-xs-12 form-group">
+                <input type="text" value="" name="sleeps" id="sleeps" placeholder="Input sleeps" class="form-control text-center">
+            </div>
+
+            <div class="col-xs-12 form-group">
+                <input type="text" value="" name="feed" id="feed" placeholder="Input feed" class="form-control text-center">
+            </div>
+
+            <div class="col-xs-12 form-group">
+               <input type="submit" value="Add Item" class="btninput form-control text-center">
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+</body>
+</html>

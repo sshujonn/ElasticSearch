@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+{% for item in item %}
+    <div class="container" style="background-color: rgba(11,255,10,0.07)">
+        <h1 style="font-weight: bolder" class="text-center">UPDATE ITEM</h1>
+        <form action="/update" method="GET">
+            <div class="row searchitems">
+                <div class="col-xs-12 form-group">
+                    <input type="text" value="{{ item._source.name }}" name="name" id="name" placeholder="Input Name" class="form-control text-center">
+                </div>
+
+                <div class="col-xs-12 form-group">
+                    <input type="text" value="{{ item._source.address }}" name="address" id="address" placeholder="Input Address" class="form-control text-center">
+                </div>
+
+                <div class="col-xs-12 form-group">
+                    <input type="text" value="{{ item._source.price }}" name="price" id="price" placeholder="Input Price" class="form-control text-center">
+                </div>
+
+                <div class="col-xs-12 form-group">
+                    <input type="text" value="{{ item._source.url }}" name="url_link" id="url_link" placeholder="Input url link" class="form-control text-center">
+                </div>
+
+                <div class="col-xs-12 form-group">
+                    <input type="text" value="{{ item._source.sleeps }}" name="sleeps" id="sleeps" placeholder="Input sleeps" class="form-control text-center">
+                </div>
+
+                <div class="col-xs-12 form-group">
+                    <input type="text" value="{{ item._source.feed }}" name="feed" id="feed" placeholder="Input feed" class="form-control text-center">
+                </div>
+                <input type="hidden" value="{{ item._id }}" name="id" id="id">
+
+                <div class="col-xs-12 form-group">
+                   <input type="submit" value="Update Item" class="btninput form-control text-center">
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+
+{% endfor %}
+</body>
+</html>
